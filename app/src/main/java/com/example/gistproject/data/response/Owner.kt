@@ -6,5 +6,5 @@ class Owner (
     @SerializedName("login")
     val login: String? = null,
     @SerializedName("avatar_url")
-    val avatar_url: String? = null,
+    val avatar_url: String? = null
 )
