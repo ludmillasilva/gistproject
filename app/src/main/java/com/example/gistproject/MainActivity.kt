@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.example.gistproject.presentation.adapter.Adapter
 import com.example.gistproject.presentation.fragment.FragmentListGist
+import com.example.gistproject.presentation.viewmodel.GistViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -14,9 +15,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var tablayout: TabLayout
     private var fragmentListGist: FragmentListGist? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        
 
         viewpager= findViewById(R.id.viewPager)
         tablayout= findViewById(R.id.tabLayout)

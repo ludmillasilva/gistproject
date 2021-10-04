@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.gistproject.data.factory.Network
 import com.example.gistproject.data.repository.GistRepositoryImpl
+import com.example.gistproject.data.response.Owner
 import com.example.gistproject.data.response.ResponseGist
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

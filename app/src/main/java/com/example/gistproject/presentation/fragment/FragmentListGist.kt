@@ -1,5 +1,6 @@
 package com.example.gistproject.presentation.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gistproject.DetailsActivity
 import com.example.gistproject.R
+import com.example.gistproject.data.response.Owner
+import com.example.gistproject.domain.GistConfig
 import com.example.gistproject.presentation.adapter.GistsAdapter
 import com.example.gistproject.presentation.viewmodel.GistViewModel
 
@@ -38,7 +42,6 @@ class FragmentListGist: Fragment(), ListenerGists {
         initObservers()
 
     }
-
     fun initRequests() {
         gistsViewModel.getGist()
     }
@@ -59,7 +62,15 @@ class FragmentListGist: Fragment(), ListenerGists {
     }
 
 
-    override fun getGists() {
-        TODO("Not yet implemented")
+    override fun getDetailGist(GistId: Owner){
+        val detailGistId = Intent (requireContext(),DetailsActivity::class.java)
+        detailGistId.putExtra("BASE_URL", GistConfig.parserToGist(GistId))
+        startActivity(detailGistId)
+    }
+
+    override fun getGist(Gist: Int) {
+        val castGistId = Intent (requireContext(), DetailsActivity::class.java)
+        castGistId.putExtra("BASE_URL", Gist)
+        startActivity(castGistId)
     }
 }

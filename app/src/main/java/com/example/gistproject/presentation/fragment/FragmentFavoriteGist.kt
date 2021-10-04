@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gistproject.R
+import com.example.gistproject.data.response.Owner
 import com.example.gistproject.presentation.adapter.GistsAdapter
 
 class FragmentFavoriteGist: Fragment(), ListenerGists {
@@ -32,8 +33,14 @@ class FragmentFavoriteGist: Fragment(), ListenerGists {
         rvgists.adapter = gistsAdapter
     }
 
-    override fun getGists() {
+    override fun getGist(Gist: Int) {
         TODO("Not yet implemented")
     }
+
+    override fun getDetailGist(GistId: Owner) {
+        TODO("Not yet implemented")
+    }
+
+
 }
 
