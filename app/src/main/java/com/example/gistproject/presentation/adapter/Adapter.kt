@@ -8,13 +8,13 @@ import com.example.gistproject.presentation.fragment.FragmentListGist
 
 class Adapter (fa: FragmentActivity): FragmentStateAdapter(fa) {
     override fun getItemCount(): Int {
-        return 2
+        return 1
     }
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
             0 -> FragmentListGist()
-            1 -> FavoriteGist()
+         //   1 -> FavoriteGist() TODO
             else -> FragmentListGist()
 
         }

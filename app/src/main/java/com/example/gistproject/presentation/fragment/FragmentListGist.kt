@@ -1,9 +1,38 @@
 package com.example.gistproject.presentation.fragment
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.example.gistproject.R
 import com.example.gistproject.presentation.adapter.GitsAdapter
 
 class FragmentListGist: Fragment(), ListenerGists {
 
-    lateiniti var gitsAdapter: GitsAdapter
+    lateinit var gitsAdapter: GitsAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_gist, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val rvgists = view.findViewById<RecyclerView>(R.id.rvGist)
+        gitsAdapter = GitsAdapter(context = view.context, listener = this)
+        rvgists.adapter = gitsAdapter
+    }
+
+    override fun getGists() {
+        TODO("Not yet implemented")
+    }
 }
