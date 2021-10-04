@@ -5,16 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gistproject.R
 import com.example.gistproject.presentation.adapter.GistsAdapter
-import com.example.gistproject.presentation.viewmodel.GistViewModel
 
-class FragmentListGist: Fragment(), ListenerGists {
+class FragmentFavoriteGist: Fragment(), ListenerGists {
 
     lateinit var gistsAdapter: GistsAdapter
-    lateinit var gistsViewModel: GistViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,41 +22,18 @@ class FragmentListGist: Fragment(), ListenerGists {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_gist, container, false)
+        return inflater.inflate(R.layout.fragment_favorite_gist, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val rvgists = view.findViewById<RecyclerView>(R.id.rvGist)
-        gistsViewModel = ViewModelProvider(requireActivity()).get(GistViewModel::class.java)
         gistsAdapter = GistsAdapter(context = view.context, listener = this)
         rvgists.adapter = gistsAdapter
-        initRequests()
-        initObservers()
-
     }
-
-    fun initRequests() {
-        gistsViewModel.getGist()
-    }
-
-    fun initObservers() {
-        gistObserver()
-    }
-
-    fun gistObserver() {
-        gistsViewModel.liveResponseGist.observe(viewLifecycleOwner,{ gist ->
-            gist?.let {
-                gistsAdapter.listgist.clear()
-                gistsAdapter.listgist.addAll(it)
-                gistsAdapter.notifyDataSetChanged()
-            }
-
-        })
-    }
-
 
     override fun getGists() {
         TODO("Not yet implemented")
     }
 }
+

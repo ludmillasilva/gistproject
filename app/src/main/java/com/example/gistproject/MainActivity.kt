@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.example.gistproject.presentation.adapter.Adapter
-import com.example.gistproject.presentation.adapter.GitsAdapter
 import com.example.gistproject.presentation.fragment.FragmentListGist
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator

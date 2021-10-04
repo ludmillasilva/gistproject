@@ -1,7 +1,6 @@
 package com.example.gistproject.presentation.adapter
 
 import android.content.Context
-import android.provider.SyncStateContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,17 +9,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.gistproject.R
-import com.example.gistproject.data.factory.Constants
 import com.example.gistproject.data.response.ResponseGist
 import com.example.gistproject.presentation.fragment.ListenerGists
 import de.hdodenhof.circleimageview.CircleImageView
 
 
-class GitsAdapter (
+class GistsAdapter (
    val context: Context,
    var listgist: MutableList<ResponseGist> = mutableListOf(),
    val listener: ListenerGists? = null
-):  RecyclerView.Adapter<GitsAdapter.ViewHolder>() {
+):  RecyclerView.Adapter<GistsAdapter.ViewHolder>() {
 
    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
       var imageUser: CircleImageView? = view.findViewById(R.id.circleImageView)
@@ -37,12 +35,11 @@ class GitsAdapter (
    }
 
    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-      if(listgist[position].owner.avatar_url.isNullOrBlank()) {
-         holder.imageUser?.let { Glide.with(context).load((listgist[position].owner.avatar_url))
-         }
-         holder.nameUser?.text = listgist[position].owner.login
-         holder.fileTypeUser?.text = listgist[position].files.map {file -> file.value.type }.toList().joinToString(", ")
+      if(listgist[position].owner.avatar_url?.isNotBlank() == true) {
+         holder.imageUser?.let { Glide.with(context).load((listgist[position].owner.avatar_url)).into(it) }
       }
+      holder.nameUser?.text = listgist[position].owner.login
+      holder.fileTypeUser?.text = listgist[position].files.map {file -> file.value.type }.toList().joinToString(", ")
    }
 
    override fun getItemCount() = listgist.size
