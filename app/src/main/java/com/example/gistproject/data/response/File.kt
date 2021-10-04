@@ -7,4 +7,7 @@ class File {
     @SerializedName("type")
     @Expose
     val type: String? = null
+    @SerializedName("filename")
+    @Expose
+    val filename: String? = null
 }
