@@ -19,6 +19,7 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var gistsAdapter: GistsAdapter
     private val gistViewModel = GistViewModel()
     private lateinit var returnbtn: FloatingActionButton
+    private lateinit var idUser: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,7 @@ class DetailsActivity : AppCompatActivity() {
         nameUser = findViewById(R.id.txtName)
         returnbtn = findViewById(R.id.fltReturnBtn)
         fileName = findViewById(R.id.txtFilename)
+        idUser = findViewById(R.id.txtId)
 
 
         val gistParcelable: GistParcelable? = intent.extras?.getParcelable("BASE_URL")
@@ -36,6 +38,7 @@ class DetailsActivity : AppCompatActivity() {
         Glide.with(this).load((gistParcelable?.avatar_url)).into(imgUser)
         nameUser.text = gistParcelable?.login
         fileName.text = gistParcelable?.filename
+        idUser.text = gistParcelable?.id
 
         /*gist?.let{
             gistViewModel.getGist(it)
