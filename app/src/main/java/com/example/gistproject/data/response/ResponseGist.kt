@@ -11,5 +11,6 @@ class ResponseGist (
     val owner: Owner,
     @SerializedName("files")
     @Expose
-    val files: Map<String,File>
+    val files: Map<String,File>,
+    var isFavorite: Boolean
 )

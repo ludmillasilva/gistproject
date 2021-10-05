@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gistproject.R
 import com.example.gistproject.data.response.Owner
+import com.example.gistproject.data.response.ResponseGist
+import com.example.gistproject.domain.GistParcelable
 import com.example.gistproject.presentation.adapter.GistsAdapter
 
 class FragmentFavoriteGist: Fragment(), ListenerGists {
@@ -37,9 +39,14 @@ class FragmentFavoriteGist: Fragment(), ListenerGists {
         TODO("Not yet implemented")
     }
 
-    override fun getDetailGist(GistId: Owner) {
+    override fun getDetailGist(gist: GistParcelable) {
         TODO("Not yet implemented")
     }
+
+    override fun handleFavorite(gist: GistParcelable, isFavoriteGist: Boolean) {
+        TODO("Not yet implemented")
+    }
+
 
 
 }

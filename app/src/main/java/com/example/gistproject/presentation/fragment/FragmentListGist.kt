@@ -10,8 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gistproject.DetailsActivity
 import com.example.gistproject.R
-import com.example.gistproject.data.response.Owner
-import com.example.gistproject.domain.GistConfig
+import com.example.gistproject.data.model.GistEntity
+import com.example.gistproject.data.response.ResponseGist
+import com.example.gistproject.domain.GistParcelable
 import com.example.gistproject.presentation.adapter.GistsAdapter
 import com.example.gistproject.presentation.viewmodel.GistViewModel
 
@@ -51,7 +52,7 @@ class FragmentListGist: Fragment(), ListenerGists {
     }
 
     fun gistObserver() {
-        gistsViewModel.liveResponseGist.observe(viewLifecycleOwner,{ gist ->
+        gistsViewModel.liveResponseGistParcelable.observe(viewLifecycleOwner,{ gist ->
             gist?.let {
                 gistsAdapter.listgist.clear()
                 gistsAdapter.listgist.addAll(it)
@@ -62,11 +63,32 @@ class FragmentListGist: Fragment(), ListenerGists {
     }
 
 
-    override fun getDetailGist(owner: Owner){
+    override fun getDetailGist(gist: GistParcelable){
         val detailGistId = Intent (requireContext(),DetailsActivity::class.java)
-        detailGistId.putExtra("BASE_URL", GistConfig.parserToGist(owner))
+        detailGistId.putExtra("BASE_URL", gist)
         startActivity(detailGistId)
     }
+
+    override fun handleFavorite(gist: GistParcelable, isFavoriteGist: Boolean) {
+        var id:String = ""
+        gist.id.let {
+            if (it != null) {
+                id = it
+            }
+        }
+        val gistEntity = GistEntity(
+            id,
+            gist.login,
+            gist.avatar_url,
+            gist.type
+        )
+        if(isFavoriteGist){
+            gistsViewModel.saveGist(gistEntity)
+        }else{
+            gistsViewModel.deleteGist(gistEntity)
+        }
+    }
+
 
     override fun getGist(Gist: Int) {
         val castGistId = Intent (requireContext(), DetailsActivity::class.java)

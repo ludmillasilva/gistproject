@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "gist")
 
-data class Gist (
+data class GistEntity (
     @PrimaryKey
-    val id: Long = 0L,
+    val id: String,
 
     @ColumnInfo(name = "login")
     val login: String? = null,
