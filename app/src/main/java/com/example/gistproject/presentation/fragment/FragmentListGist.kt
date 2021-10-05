@@ -62,9 +62,9 @@ class FragmentListGist: Fragment(), ListenerGists {
     }
 
 
-    override fun getDetailGist(GistId: Owner){
+    override fun getDetailGist(owner: Owner){
         val detailGistId = Intent (requireContext(),DetailsActivity::class.java)
-        detailGistId.putExtra("BASE_URL", GistConfig.parserToGist(GistId))
+        detailGistId.putExtra("BASE_URL", GistConfig.parserToGist(owner))
         startActivity(detailGistId)
     }
 

@@ -40,6 +40,9 @@ class GistsAdapter (
       }
       holder.nameUser?.text = listgist[position].owner.login
       holder.fileTypeUser?.text = listgist[position].files.map {file -> file.value.type }.toList().joinToString(", ")
+      holder.imageUser?.setOnClickListener {
+         listener?.getDetailGist(listgist[position].owner)
+      }
    }
 
    override fun getItemCount() = listgist.size

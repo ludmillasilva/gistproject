@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.gistproject.domain.GistConfig
 import com.example.gistproject.presentation.adapter.GistsAdapter
 import com.example.gistproject.presentation.viewmodel.GistViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.hdodenhof.circleimageview.CircleImageView
 
 
@@ -16,6 +17,7 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var nameUser: TextView
     private lateinit var gistsAdapter: GistsAdapter
     private val gistViewModel = GistViewModel()
+    private lateinit var returnbtn: FloatingActionButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +26,7 @@ class DetailsActivity : AppCompatActivity() {
 
         imgUser = findViewById(R.id.circleImageView)
         nameUser = findViewById(R.id.txtName)
+        returnbtn = findViewById(R.id.fltReturnBtn)
 
 
         val gist: GistConfig? = intent.extras?.getParcelable("BASE_URL")
@@ -33,6 +36,10 @@ class DetailsActivity : AppCompatActivity() {
         /*gist?.let{
             gistViewModel.getGist(it)
         }*/
+
+        returnbtn.setOnClickListener{
+            finish()
+        }
 
     }
 }
