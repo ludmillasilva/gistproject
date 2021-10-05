@@ -88,7 +88,7 @@ class FragmentListGist: Fragment(), ListenerGists {
     fun gistObserver() {
         gistsViewModel.liveResponseGistParcelable.observe(viewLifecycleOwner,{ gist ->
             gist?.let {
-                gistsAdapter.listgist.clear()
+                //gistsAdapter.listgist.clear()
                 gistsAdapter.listgist.addAll(it)
                 gistsAdapter.notifyDataSetChanged()
             }
