@@ -8,8 +8,8 @@ import io.reactivex.Single
 class GistRepositoryImpl {
     private val remoteSource: RemoteSource = Network.getRemoteSource()
 
-    fun getGist(): Single<List<ResponseGist>> {
-        return remoteSource.getGists().map {
+    fun getGist(currentPage: Int): Single<List<ResponseGist>> {
+        return remoteSource.getGists(currentPage).map {
             it
         }
     }

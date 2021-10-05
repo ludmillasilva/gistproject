@@ -15,11 +15,23 @@ import com.example.gistproject.data.response.ResponseGist
 import com.example.gistproject.domain.GistParcelable
 import com.example.gistproject.presentation.adapter.GistsAdapter
 import com.example.gistproject.presentation.viewmodel.GistViewModel
+import kotlinx.android.synthetic.main.activity_main.*
+import androidx.recyclerview.widget.LinearLayoutManager
+
+
+
 
 class FragmentListGist: Fragment(), ListenerGists {
 
     lateinit var gistsAdapter: GistsAdapter
     lateinit var gistsViewModel: GistViewModel
+    var pageCount = 1
+    var pastVisibleItems  = 0
+    var visibleItemCount = 0
+    var totalItemCount  = 0
+    lateinit var rvLayoutManager: LinearLayoutManager
+    private var loading = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +51,34 @@ class FragmentListGist: Fragment(), ListenerGists {
         gistsViewModel = ViewModelProvider(requireActivity()).get(GistViewModel::class.java)
         gistsAdapter = GistsAdapter(context = view.context, listener = this)
         rvgists.adapter = gistsAdapter
+
+
+        rvLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        rvgists.setLayoutManager(rvLayoutManager)
+
+        rvgists.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0) {
+                    visibleItemCount = rvLayoutManager.getChildCount()
+                    totalItemCount = rvLayoutManager.getItemCount()
+                    pastVisibleItems = rvLayoutManager.findFirstVisibleItemPosition()
+                    if (loading) {
+                        if (visibleItemCount + pastVisibleItems >= totalItemCount) {
+                            loading = false
+                            gistsViewModel.getGist(pageCount + 1)
+                            pageCount++
+                            loading = true
+                        }
+                    }
+                }
+            }
+        })
+
         initRequests()
         initObservers()
-
     }
     fun initRequests() {
-        gistsViewModel.getGist()
+        gistsViewModel.getGist(pageCount)
     }
 
     fun initObservers() {

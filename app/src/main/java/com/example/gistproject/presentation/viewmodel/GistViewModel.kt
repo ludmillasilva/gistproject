@@ -21,8 +21,8 @@ class GistViewModel: ViewModel() {
     val gistFavoriteRepository: GistFavoriteRepository = GistFavoriteRepository()
     val liveResponseGistParcelable: MutableLiveData<List<GistParcelable?>> = MutableLiveData<List<GistParcelable?>>()
 
-    fun getGist(){
-        gistRepository.getGist()
+    fun getGist(currentPage: Int){
+        gistRepository.getGist(currentPage)
             .compose(Network.applySingleTransformer())
             .subscribe({
                 liveResponseGistParcelable.value = it.map { gist->
