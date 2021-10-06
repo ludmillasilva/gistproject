@@ -5,12 +5,13 @@
       <map>
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/drawable/back.xml" value="0.1" />
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/drawable/background_circle.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/drawable/empty_heart.xml" value="0.1" />
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/drawable/full_heart.xml" value="0.14907407407407408" />
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/drawable/heart_btn.xml" value="0.1" />
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.14907407407407408" />
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/layout/activity_details.xml" value="0.33" />
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/layout/activity_details2.xml" value="0.1" />
-        <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/layout/fragment_favorite_gist.xml" value="0.2796296296296296" />
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/layout/fragment_gist.xml" value="0.33" />
         <entry key="..\:/Users/Ludmilla/AndroidStudioProjects/gistproject/app/src/main/res/layout/item_gist.xml" value="0.33" />

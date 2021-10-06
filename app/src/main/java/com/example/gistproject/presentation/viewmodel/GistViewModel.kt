@@ -21,14 +21,17 @@ class GistViewModel: ViewModel() {
     val gistFavoriteRepository: GistFavoriteRepository = GistFavoriteRepository()
     val liveResponseGistParcelable: MutableLiveData<List<GistParcelable?>> = MutableLiveData<List<GistParcelable?>>()
 
-    fun getGist(currentPage: Int){
+    fun getGist(currentPage: Int, loadCircle:(showload: Boolean)-> Unit){
         gistRepository.getGist(currentPage)
             .compose(Network.applySingleTransformer())
+            .doOnSubscribe { loadCircle(true) }
             .subscribe({
                 liveResponseGistParcelable.value = it.map { gist->
                     GistParcelable.parserToGistFull(gist)
                 }.toList()
+                loadCircle(false)
             },{
+                loadCircle(false)
                 print(it.message)
             }).addToDispose()
     }

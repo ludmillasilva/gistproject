@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@ class FragmentListGist: Fragment(), ListenerGists {
 
     lateinit var gistsAdapter: GistsAdapter
     lateinit var gistsViewModel: GistViewModel
+    lateinit var loadCircle: RelativeLayout
     var pageCount = 1
     var pastVisibleItems  = 0
     var visibleItemCount = 0
@@ -65,7 +67,7 @@ class FragmentListGist: Fragment(), ListenerGists {
                     if (loading) {
                         if (visibleItemCount + pastVisibleItems >= totalItemCount) {
                             loading = false
-                            gistsViewModel.getGist(pageCount + 1)
+                            gistsViewModel.getGist(pageCount + 1,::loadCircle)
                             pageCount++
                             loading = true
                         }
@@ -77,8 +79,23 @@ class FragmentListGist: Fragment(), ListenerGists {
         initRequests()
         initObservers()
     }
+
+    fun loadCircle(showLoading:Boolean) {
+        val view: View? = activity?.findViewById(R.id.loadingPanel)
+        view.let {
+            if(view is RelativeLayout&&showLoading){
+                view.visibility = View.VISIBLE
+                view.bringToFront()
+                view.invalidate()
+            }else{
+                view?.visibility = View.GONE
+            }
+        }
+
+    }
+
     fun initRequests() {
-        gistsViewModel.getGist(pageCount)
+        gistsViewModel.getGist(pageCount,::loadCircle)
     }
 
     fun initObservers() {
