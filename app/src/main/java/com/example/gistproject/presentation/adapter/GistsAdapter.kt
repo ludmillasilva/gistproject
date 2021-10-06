@@ -51,10 +51,11 @@ class GistsAdapter (
          }
       }
       holder.favoriteButton?.setOnClickListener {
-         listgist[position]?.let { position -> position.isFavorite?.let { position2 ->
+         listgist[position]?.let { position -> position.isFavorite?.let { isFavorite ->
             listener?.handleFavorite(position,
-               !position2
+               !isFavorite
             )
+            position.isFavorite=!isFavorite
          }
          }
       }

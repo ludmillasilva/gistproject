@@ -11,7 +11,7 @@ data class GistParcelable(
     val avatar_url: String? = null,
     val type: String? = null,
     val filename: String? = null,
-    val isFavorite: Boolean? = null
+    var isFavorite: Boolean? = null
 
     ): Parcelable{
     companion object{
