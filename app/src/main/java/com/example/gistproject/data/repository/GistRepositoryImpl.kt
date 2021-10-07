@@ -18,5 +18,9 @@ class GistRepositoryImpl {
             it
         }
     }
+    fun getSearchGist(searchGist:String): Single<List<ResponseGist>> {
+        return remoteSource.getGistsByUsername(searchGist)
+            .map { it}
+    }
 
 }
