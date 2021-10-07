@@ -19,8 +19,8 @@ data class GistEntity (
     @ColumnInfo(name = "filetype")
     val filetype: String? = null,
 
-   /* @ColumnInfo(name = "filename")
-    val filename: String? = null,*/
+    @ColumnInfo(name = "filename")
+    val filename: String? = null,
 
 
     )

@@ -139,7 +139,8 @@ class FragmentListGist: Fragment(), ListenerGists {
             id,
             gist.login,
             gist.avatar_url,
-            gist.type
+            gist.type,
+            gist.filename
         )
         if(isFavoriteGist){
             gistsViewModel.saveGist(gistEntity)

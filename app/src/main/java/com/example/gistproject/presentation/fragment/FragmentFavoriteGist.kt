@@ -61,6 +61,7 @@ class FragmentFavoriteGist: Fragment(), ListenerGists {
                         login = it.login,
                         avatar_url = it.avatar_url,
                         type = it.filetype,
+                        filename = it.filename,
                         isFavorite = true)
                 }
                 gistsAdapter.listgist.clear()
@@ -93,7 +94,8 @@ class FragmentFavoriteGist: Fragment(), ListenerGists {
             id,
             gist.login,
             gist.avatar_url,
-            gist.type
+            gist.type,
+            gist.filename
         )
         if(isFavoriteGist){
             gistFavoriteViewModel.saveGist(gistEntity)

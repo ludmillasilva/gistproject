@@ -9,7 +9,7 @@ import com.example.gistproject.data.model.GistEntity
 
 @Database(
     entities = [GistEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 
