@@ -33,7 +33,7 @@ class GistUnitTest {
 
     @Test
     fun `when_getGists_get_sucess_then_set_liveResponseGit`(){
-        Mockito.`when`(gistRepository.getGist(1)).thenReturn(getSingleMock())
+       // Mockito.`when`(gistRepository.getGist(1)).thenReturn(getSingleMock())
         Mockito.`when`(remoteSource.getGists(1)).thenReturn(getSingleMock())
         viewModel.liveResponseGistParcelable.value?.isEmpty()?.let { Assert.assertTrue(it) }
     }
