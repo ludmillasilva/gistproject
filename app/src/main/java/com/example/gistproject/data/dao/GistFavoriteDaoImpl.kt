@@ -7,23 +7,24 @@ import com.example.gistproject.data.model.GistEntity
 
 class GistFavoriteDaoImpl: GistFavoriteDao {
     override suspend fun save(favorite: GistEntity) {
+        val db: GistDatabase = GistDatabase.getInstance(ApplicationContext.appContext)
         db.gistFavoriteDao(). save(favorite)
     }
 
     override suspend fun remove(favorite: GistEntity) {
+        val db: GistDatabase = GistDatabase.getInstance(ApplicationContext.appContext)
         db.gistFavoriteDao().remove(favorite)
     }
 
     override fun getAll(): LiveData<List<GistEntity>> {
+        val db: GistDatabase = GistDatabase.getInstance(ApplicationContext.appContext)
         return db.gistFavoriteDao().getAll()
     }
 
     override fun checkIfIsFavorite(id: String): Boolean {
+        val db: GistDatabase = GistDatabase.getInstance(ApplicationContext.appContext)
         return db.gistFavoriteDao().checkIfIsFavorite(id)
     }
 
-    companion object{
-        var db: GistDatabase = GistDatabase.getInstance(ApplicationContext.appContext)
-    }
 
 }

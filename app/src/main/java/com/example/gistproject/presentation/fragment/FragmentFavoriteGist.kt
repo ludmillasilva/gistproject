@@ -1,5 +1,6 @@
 package com.example.gistproject.presentation.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gistproject.DetailsActivity
 import com.example.gistproject.R
 import com.example.gistproject.data.model.GistEntity
 import com.example.gistproject.domain.GistParcelable
@@ -68,12 +70,16 @@ class FragmentFavoriteGist: Fragment(), ListenerGists {
         })
     }
 
-    override fun getGist(Gist: Int) {
-        TODO("Not yet implemented")
+      override fun getGist(Gist: Int) {
+        val castGistId = Intent (requireContext(), DetailsActivity::class.java)
+        castGistId.putExtra("BASE_URL", Gist)
+        startActivity(castGistId)
     }
 
-    override fun getDetailGist(gist: GistParcelable) {
-        TODO("Not yet implemented")
+    override fun getDetailGist(gist: GistParcelable){
+        val detailGistId = Intent (requireContext(), DetailsActivity::class.java)
+        detailGistId.putExtra("BASE_URL", gist)
+        startActivity(detailGistId)
     }
 
     override fun handleFavorite(gist: GistParcelable, isFavoriteGist: Boolean) {
