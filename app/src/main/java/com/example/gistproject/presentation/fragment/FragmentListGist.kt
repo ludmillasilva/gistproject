@@ -80,6 +80,14 @@ class FragmentListGist: Fragment(), ListenerGists {
         initObservers()
     }
 
+    override fun onResume() {
+        super.onResume()
+        gistsAdapter.listgist.clear()
+        gistsViewModel.liveResponseGistParcelable.removeObservers(this)
+        gistsViewModel.getGist(1,::loadCircle)
+        gistObserver()
+    }
+
     fun loadCircle(showLoading:Boolean) {
         val view: View? = activity?.findViewById(R.id.loadingPanel)
         view.let {

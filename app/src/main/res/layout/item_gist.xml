@@ -34,6 +34,7 @@
         android:id="@+id/txtFileType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxEms="8"
         android:layout_marginTop="8dp"
         android:text="Tipo de arquivo"
         android:textColor="@color/white"
