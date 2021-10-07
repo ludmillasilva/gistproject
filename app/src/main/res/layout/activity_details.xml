@@ -38,46 +38,64 @@
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="Usuario"
         android:textSize="24dp"
         android:textColor="@color/white"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
 
-   <!-- <TextView
-        android:id="@+id/txtFilenameTitle"
+
+    <TextView
+        android:id="@+id/txtIdTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome do arquivo:"
+        android:text="ID:"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/txtFilename"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtId"
+        app:layout_constraintEnd_toStartOf="@+id/txtId"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtFilename" />
--->
+        app:layout_constraintTop_toTopOf="@+id/txtId" />
+
+
     <TextView
         android:id="@+id/txtId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Id"
         android:textColor="@color/white"
+        android:textAlignment="center"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
+    <TextView
+        android:id="@+id/txtFilenameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do arquivo:"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtId" />
 
     <TextView
         android:id="@+id/txtFilename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome do arquivo"
         android:layout_marginTop="16dp"
+        android:text="Nome do arquivo"
+        android:textAlignment="center"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtId" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFilenameTitle" />
 
 
 
