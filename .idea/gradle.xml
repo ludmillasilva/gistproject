@@ -8,7 +8,7 @@
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="D:/Área de Trabalho/gradle-4.2.1" />
-        <option name="gradleJvm" value="1.8" />
+        <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
